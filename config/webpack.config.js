@@ -21,8 +21,8 @@ var webpack = require('webpack');
 var ionicWebpackFactory = require(process.env.IONIC_WEBPACK_FACTORY);
 
 function getPlugins() {
-  console.log(".env");
-  console.log(process.env);
+  //console.log(".env");
+  //console.log(process.env);
   var plugins = [
     new webpack.DefinePlugin({
       'process.env': _(process.env)
