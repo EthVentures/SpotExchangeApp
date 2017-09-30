@@ -11,25 +11,20 @@
 
   <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
-  <!--<link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.options %>">-->
-
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#4e8ef7">
 
-
-
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key="></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=<!-- @secret client_id -->"></script>
   <!-- cordova.js required for cordova apps -->
   <script src="cordova.js"></script>
 
-  <!-- un-comment this code to enable service worker
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
         .then(() => console.log('service worker installed'))
         .catch(err => console.error('Error', err));
     }
-  </script>-->
+  </script>
 
   <link href="build/main.css" rel="stylesheet">
 

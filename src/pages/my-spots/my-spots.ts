@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the MySpotsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AppConfig } from '../../config/app.config';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MySpotsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public appConfig:AppConfig) {
   }
 
   view() {
-    
+
   }
 
   ionViewDidLoad() {

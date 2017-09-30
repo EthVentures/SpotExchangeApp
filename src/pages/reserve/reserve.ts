@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MockDataService } from '../../services/mock.data.service';
 import { DetailsPage } from '../details/details';
+import { AppConfig } from '../../config/app.config';
 
  import {
  GoogleMaps,
@@ -24,7 +25,7 @@ export class ReservePage {
     @ViewChild('map') mapElement: ElementRef;
     map: any;
 
-    constructor(public navCtrl: NavController, public geolocation: Geolocation, public mockdata:MockDataService) {
+    constructor(public navCtrl: NavController, public geolocation: Geolocation, public mockdata:MockDataService,public appConfig:AppConfig) {
 
     }
 
