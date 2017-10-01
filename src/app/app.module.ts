@@ -20,7 +20,13 @@ import { RegisterPage } from '../pages/register/register';
 import { AccountPage } from '../pages/account/account';
 import { HistoryPage } from '../pages/history/history';
 
-import { AppConfig }    from '../config/app.config';
+import { AppConfig } from '../config/app.config';
+
+import { InjectionToken } from '@angular/core';
+
+import { AgmCoreModule } from '@agm/core';
+
+declare var process: any;
 
 import {
 GoogleMaps
@@ -43,6 +49,9 @@ GoogleMaps
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: process.env['GOOGLE_MAP_API_KEY']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -68,4 +77,6 @@ GoogleMaps
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
-export class AppModule {}
+export class AppModule {
+
+}

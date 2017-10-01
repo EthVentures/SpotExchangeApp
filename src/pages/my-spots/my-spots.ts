@@ -16,8 +16,6 @@ export class MySpotsPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MySpotsPage');
-  }
+  ionViewDidLoad() { }
 
 }

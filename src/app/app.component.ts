@@ -25,7 +25,6 @@ export class MyApp {
 
   constructor(public appConfig: AppConfig,public modalCtrl: ModalController,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public authService:AuthService) {
     this.initializeApp();
-    console.log('Hi', this.appConfig);
   }
 
   getPages(isAuthUser) {

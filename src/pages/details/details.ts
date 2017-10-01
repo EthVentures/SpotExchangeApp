@@ -14,12 +14,12 @@ export class DetailsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public appConfig:AppConfig) {
     var obj = navParams.data['location'];
-    this.location = obj.lat() + "," + obj.lng();
+    this.location = obj.lat + "," + obj.lng;
     this.date = Date();
-    console.log(appConfig);
   }
 
   ionViewDidLoad() {
+
   }
 
 }

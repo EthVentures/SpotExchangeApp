@@ -22,15 +22,45 @@ import { AppConfig } from '../../config/app.config';
 })
 export class ReservePage {
 
-    @ViewChild('map') mapElement: ElementRef;
-    map: any;
+    //@ViewChild('map') mapElement: ElementRef;
+    //map: any;
 
+    title: string = 'My first AGM project';
+    lat: number = 41.890713;
+    lng: number = -87.624325;
+    zoom: number = 16;
+    markers:any;
+    polys:any;
+    loaded: boolean = false;
+    paths:any;
     constructor(public navCtrl: NavController, public geolocation: Geolocation, public mockdata:MockDataService,public appConfig:AppConfig) {
-
+      this.markers = [];
+      this.polys = mockdata.getSpots();
+      console.log(this.polys);
     }
 
     ionViewDidLoad(){
-      this.loadMap();
+      //this.loadMap();
+      this.mockdata.parkwhizSpot(this.lat, this.lng).subscribe(data => {
+          for (var i = 0; i < data.length; i++) {
+            var item = data[i]._embedded['pw:location'];
+            var location = item.entrances[0].coordinates;
+            var itemLatLng = {lat: location[0], lng: location[1]};
+            this.markers.push(itemLatLng);
+          }
+          console.log(this.markers);
+          this.loaded = true;
+      });
+    }
+
+    markerClick(item) {
+      console.log(item);
+      this.navCtrl.push(DetailsPage, { location: item });
+    }
+
+    polyClick(item) {
+      console.log(item.geo[0]);
+      this.navCtrl.push(DetailsPage, { location: item.geo[0] });
     }
 
     getRandomColor() {
@@ -42,6 +72,8 @@ export class ReservePage {
 
       return color;
     }
+
+    /*
 
     addToMap(spot) {
       var color = this.getRandomColor();
@@ -117,6 +149,6 @@ export class ReservePage {
       //});
 
         this.loadSpots();
-    }
+    }*/
 
 }

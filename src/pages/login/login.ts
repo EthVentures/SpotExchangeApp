@@ -14,9 +14,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService:AuthService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+  ionViewDidLoad() { }
 
   cancel() {
     this.navCtrl.pop();
