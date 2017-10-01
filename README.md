@@ -1,5 +1,5 @@
 # SpotExchange Front End App
-[The Spot Exchange](https://thespot.exchange), a submission to the "Unchain the Frame" Hackathon Project. Scroll Down for [Screenshots]()
+[The Spot Exchange](https://thespot.exchange), a submission to the "Unchain the Frame" Hackathon Project. Scroll Down for [Screenshots](https://imgur.com/a/ZYANA)
 
 
 ## Prerequisites
@@ -15,10 +15,15 @@ mv default.env .env
 
 ## Launching Application
 
-To launch natively:
+To launch natively in foreground:
 ```bash
 ionic serve
 ```
+To launch natively in background:
+```bash
+nohup ionic serve --no-interactive --nobrowser --nolivereload $> ionic.log &
+```
+
 
 To launch using docker:
 ```bash
