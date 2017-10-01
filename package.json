@@ -43,6 +43,7 @@
     "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.4",
     "html-webpack-plugin": "^2.30.1",
+    "http-proxy": "1.16.2",
     "ionic": "^3.12.0",
     "ionic-angular": "3.6.1",
     "ionic-plugin-keyboard": "^2.2.1",
