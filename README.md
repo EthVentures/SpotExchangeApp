@@ -13,22 +13,24 @@ mv default.env .env
 ```
 
 
-## Launching Application
+## Launching Application Locally
 
-To launch natively in foreground:
+To launch in foreground:
 ```bash
 ionic serve
 ```
 
-To launch natively in background:
+To launch in background:
 ```bash
 nohup ionic serve --no-interactive --nobrowser  > ionic.log &
 ```
-Optional, add SSL Proxy
+
+Optional, run SSL Proxy
 ```bash
 pm2 start ssl-proxy.js
 ```
 
+## Launching Application With Docker
 
 To launch using docker:
 ```bash
@@ -41,7 +43,6 @@ docker-compose build && docker-compose up
 ![SpotExchange](https://i.imgur.com/6qjJ3lv.png)
 ### Menu
 ![SpotExchange](https://i.imgur.com/RDcbdl9.png)
-
 
 
 ## Team
