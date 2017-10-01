@@ -19,9 +19,14 @@ To launch natively in foreground:
 ```bash
 ionic serve
 ```
+
 To launch natively in background:
 ```bash
-nohup ionic serve --no-interactive --nobrowser --nolivereload $> ionic.log &
+nohup ionic serve --no-interactive --nobrowser  > ionic.log &
+```
+Optional, add SSL Proxy
+```bash
+pm2 start ssl-proxy.js
 ```
 
 
