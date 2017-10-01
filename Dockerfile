@@ -1,11 +1,7 @@
 FROM netizy/ionic-2
 
-WORKDIR /app
-
-COPY package.json /app
-
-RUN npm install
-
 COPY . /app
+WORKDIR /app
+RUN npm install
 
 CMD ionic serve --port 8888 --nobrowser
