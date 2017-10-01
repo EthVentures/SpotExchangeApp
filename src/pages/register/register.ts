@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController} from 'ionic-angular';
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public viewController: ViewController) {
   }
 
   ionViewDidLoad() {
@@ -16,11 +16,11 @@ export class RegisterPage {
   }
 
   register() {
-    
+    this.viewController.dismiss(true);
   }
 
   cancel() {
-    this.navCtrl.pop();
+    this.viewController.dismiss(false);
   }
 
 }

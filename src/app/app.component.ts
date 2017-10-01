@@ -49,11 +49,22 @@ export class MyApp {
 
   login() {
     let profileModal = this.modalCtrl.create(LoginPage, { });
+    profileModal.onDidDismiss(status => {
+      if (status) {
+        this.nav.setRoot(ReservePage);
+      }
+    });
     profileModal.present();
+
   }
 
   register() {
     let profileModal = this.modalCtrl.create(RegisterPage, { });
+    profileModal.onDidDismiss(status => {
+      if (status) {
+        this.nav.setRoot(ReservePage);
+      }
+    });
     profileModal.present();
   }
 
