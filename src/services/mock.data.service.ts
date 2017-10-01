@@ -13,7 +13,7 @@ export class MockDataService {
   }
 
   public parkwhizSpot(lat,long) {
-    return this.http.get('http://api.parkwhiz.com/v4/quotes/?q=coordinates:'+lat+','+long+'&start_time=2017-12-23T12:00&end_time=2017-12-23T20:00&api_key=' + this.appConfig.PARKWHIZ_API_KEY).map(res => res.json());
+    return this.http.get('https://api.parkwhiz.com/v4/quotes/?q=coordinates:'+lat+','+long+'&start_time=2017-12-23T12:00&end_time=2017-12-23T20:00&api_key=' + this.appConfig.PARKWHIZ_API_KEY).map(res => res.json());
   }
 
   public getSpots() {
