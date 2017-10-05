@@ -6,7 +6,11 @@ Welcome to the [Spot Exchange](https://thespot.exchange), a submission to the [U
 * Mobile Front End [(repo)](https://github.com/EthVentures/SpotExchangeApp) [(demo)](https://thespot.exchange)
 * IBM Watson based Price Suggestions [(repo)](https://github.com/EthVentures/SpotExchangeML)
 
-Scroll Down for [Screenshots](https://imgur.com/a/ZYANA)
+The core components of The Spot Exchange have been fully dockerized. Using customizable docker-compose configurations, the application configuration can be modified to allow for a complete distributed and decentralized network. This flexibility is critical for Phase III of UnchainTheFrame competition where the ledger will be opened up to interested third parties who could use and contribute verifiable parking utilization data. These third parties may include, but are not limited to municipalities, researchers, and smart city projects.   
+
+The front end is built with Ionic 2, which utilizes Cordova along with Angular 2, Typescript, and HTML 5. These tools give the ability to design a fully cross-platform application with the option of deploying to native platforms.
+
+For more details about the Phase II submission, [click here](https://goo.gl/n84gDD). Scroll Down for [Screenshots](https://imgur.com/a/ZYANA)
 
 
 ## Prerequisites
@@ -18,7 +22,6 @@ Rename default.env to .env and edit where necessary.
 ```bash
 mv default.env .env
 ```
-
 
 ## Launching Application Locally
 
