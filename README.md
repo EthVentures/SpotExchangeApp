@@ -51,6 +51,8 @@ docker-compose build && docker-compose up
 ### Menu
 ![SpotExchange](https://i.imgur.com/RDcbdl9.png)
 
+## Attribution
+For sample data, we have preloaded our applicatino with real parking data from the [Parkwhiz API](www.parkwhiz.com/developers/), with their prior permission.
 
 ## Team
 
