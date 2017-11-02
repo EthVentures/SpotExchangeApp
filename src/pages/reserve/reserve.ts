@@ -25,7 +25,6 @@ export class ReservePage {
     //@ViewChild('map') mapElement: ElementRef;
     //map: any;
 
-    title: string = 'My first AGM project';
     lat: number = 41.890713;
     lng: number = -87.624325;
     zoom: number = 16;

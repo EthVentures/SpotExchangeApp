@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Add Spot</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content color="defaultbg">
+    <div id="maptop"></div>
+    <ion-list>
+        <ion-item>
+            <button ion-button full color="sidemenu" (click)="showModal()">Select Address</button>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Pick an address"
+                [(ngModel)]="address.place">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Name">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="tel" placeholder="Phone"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="tel" placeholder="Fax"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="email" placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Hours">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Rate/Hr">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Covered</ion-label>
+          <ion-toggle></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Valet</ion-label>
+          <ion-toggle></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Self-Park</ion-label>
+          <ion-toggle></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Handicap Accessible</ion-label>
+          <ion-toggle></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>In/Out Allowed</ion-label>
+          <ion-toggle></ion-toggle>
+        </ion-item>
+        <div padding>
+          <button ion-button full color="sidemenu">Create</button>
+        </div>
+        <!--<ion-item *ngIf="address.set==true">
+            <ion-icon name="pin" item-left></ion-icon>
+            <h3>Address</h3>
+            <p>{{ placedetails.address }}</p>
+            <h3>Street name</h3>
+            <p>{{ placedetails.components.route.long }}</p>
+            <h3>Street number</h3>
+            <p>{{ placedetails.components.street_number.long }}</p>
+            <h3>Neighbourhood</h3>
+            <p>{{ placedetails.components.sublocality_level_1.long }}</p>
+            <h3>Postal Code</h3>
+            <p>{{ placedetails.components.postal_code.long }}{{ placedetails.components.postal_code_suffix.long }}</p>
+            <h3>City</h3>
+            <p>{{ placedetails.components.locality.long }}</p>
+            <h3>Location geometry</h3>
+            <p>{{ placedetails.lat }}, {{ placedetails.lng }}</p>
+        </ion-item>-->
+    </ion-list>
+</ion-content>

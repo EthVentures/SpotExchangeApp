@@ -15,16 +15,33 @@ import { AccountPage } from '../pages/account/account';
 import { HistoryPage } from '../pages/history/history';
 import { AppConfig } from '../config/app.config';
 
+import {CacheService, CacheStoragesEnum} from 'ng2-cache/ng2-cache';
+
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html', providers:[CacheService]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = HomePage;
   //pages: Array<{title: string, component: any}>;
 
-  constructor(public appConfig: AppConfig,public modalCtrl: ModalController,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public authService:AuthService) {
+  constructor(private _cacheService: CacheService,public appConfig: AppConfig,public modalCtrl: ModalController,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public authService:AuthService) {
     this.initializeApp();
+
+    var token_raw = this.getCookie('access_token').replace('s:','').split('.');
+    var token = token_raw[0];
+    console.log(token);
+    if (token_raw[0] != '') {
+      this.authService.login(token);
+    } else {
+      this.authService.logout();
+    }
+
+  }
+  getCookie(cookiename)
+  {
+    var cookiestring=RegExp(""+cookiename+"[^;]+").exec(document.cookie);
+    return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./,"") : "");
   }
 
   getPages(isAuthUser) {

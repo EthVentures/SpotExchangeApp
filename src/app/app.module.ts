@@ -28,6 +28,9 @@ import { AgmCoreModule } from '@agm/core';
 
 declare var process: any;
 
+import { AddSpotPage } from '../pages/add-spot/add-spot';
+import { ModalAutocompleteItems } from '../pages/modal-autocomplete-items/modal-autocomplete-items';
+
 import {
 GoogleMaps
 } from '@ionic-native/google-maps';
@@ -43,14 +46,17 @@ GoogleMaps
     LoginPage,
     AccountPage,
     RegisterPage,
-    HistoryPage
+    HistoryPage,
+    AddSpotPage,
+    ModalAutocompleteItems
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
-      apiKey: process.env['GOOGLE_MAP_API_KEY']
+      apiKey: process.env['GOOGLE_MAP_API_KEY'],
+      libraries: ["places"]
     })
   ],
   bootstrap: [IonicApp],
@@ -64,7 +70,9 @@ GoogleMaps
     LoginPage,
     AccountPage,
     RegisterPage,
-    HistoryPage
+    HistoryPage,
+    AddSpotPage,
+    ModalAutocompleteItems
   ],
   providers: [
     AppConfig,

@@ -19,9 +19,9 @@ export class MockDataService {
   public getSpots() {
 
     var data = [
-      {"spotid":"1","geo":
+      /*{"spotid":"1","geo":
         [{'lat':41.89052,'lng':-87.62655}, {'lat':41.89082,'lng':-87.62655},{'lat':41.89084,'lng':-87.62542},{'lat':41.89024,'lng':-87.6254},{'lat':41.89024,'lng':-87.6257},{'lat':41.89053,'lng':-87.6257}]
-      }
+      }*/
     ];
     return data;
   }

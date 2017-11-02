@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AppConfig } from '../../config/app.config';
+import { AddSpotPage } from '../add-spot/add-spot';
 
 @IonicPage()
 @Component({
@@ -14,6 +15,10 @@ export class MySpotsPage {
 
   view() {
 
+  }
+
+  add() {
+    this.navCtrl.push(AddSpotPage, { });
   }
 
   ionViewDidLoad() { }

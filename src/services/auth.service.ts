@@ -5,6 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 export class AuthService {
 
   isAuth:boolean;
+  token:string;
 
   constructor(public zone: NgZone) {
     this.isAuth = false;
@@ -33,8 +34,13 @@ export class AuthService {
 
   }
 
-  public login() {
+  public getToken() {
+    return this.token;
+  }
+
+  public login(token) {
     this.isAuth = true;
+    this.token = token;
   }
 
   public logout() {
