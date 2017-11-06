@@ -4,6 +4,9 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Reserve Details</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="report()"><ion-icon name="flag"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -18,14 +21,36 @@
       <p>1000 Lake Shore Plaza Chicago, IL 60611</p>
       <p>{{date}}</p>
     </ion-item>
+
+
     <ion-item>
-      <span item-left>15 USD/hr</span>
-      <span item-left></span>
+      <ion-icon name="sunny" item-left large ></ion-icon>
+      <p>Covered lot</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="key" item-left large ></ion-icon>
+      <p>Valet</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="hand" item-left large ></ion-icon>
+      <p>Handicap Accessible</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="person" item-left large ></ion-icon>
+      <p>Self-Parking</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="arrow-round-back" item-left large ></ion-icon>
+      <p>In/Out Allowed</p>
     </ion-item>
 
     <div padding>
-      <button ion-button full color="sidemenu" (click)="call()">Call</button>
-      <button ion-button full color="sidemenu" (click)="call()">Reserve</button>
+      <button ion-button full color="sidemenu">Call</button>
+      <button ion-button full color="sidemenu" (click)="reserve()">Reserve Spot</button>
     </div>
 
 

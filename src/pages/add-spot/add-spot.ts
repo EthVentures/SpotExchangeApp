@@ -18,13 +18,23 @@ export class AddSpotPage implements OnInit {
   map: any;
   markers = [];
   placedetails: any;
+  showSpinner:any;
 
   constructor(public navCtrl: NavController,public modalCtrl: ModalController) {
+    this.showSpinner = false;
   }
 
   ngOnInit() {
       this.initMap();
       this.initPlacedetails();
+  }
+
+  create() {
+    this.showSpinner = true;
+    var self = this;
+    setTimeout(function(){
+      self.navCtrl.pop();
+    }, 2000);
   }
 
   showModal() {

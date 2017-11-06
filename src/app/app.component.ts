@@ -15,7 +15,12 @@ import { AccountPage } from '../pages/account/account';
 import { HistoryPage } from '../pages/history/history';
 import { AppConfig } from '../config/app.config';
 
+import { MakeReservePage } from '../pages/make-reserve/make-reserve';
+import { DetailsPage } from '../pages/details/details';
+
 import {CacheService, CacheStoragesEnum} from 'ng2-cache/ng2-cache';
+import { AddSpotPage } from '../pages/add-spot/add-spot';
+
 
 @Component({
   templateUrl: 'app.html', providers:[CacheService]
@@ -47,17 +52,17 @@ export class MyApp {
   getPages(isAuthUser) {
     if (isAuthUser) {
       return [
-        { title: 'Home', component: HomePage },
-        { title: 'My Spots', component: MySpotsPage },
-        { title: 'Reserve Spot', component: ReservePage },
-        { title: 'History', component: HistoryPage },
-        { title: 'My Account', component: AccountPage },
-        { title: 'Legal', component: HomePage }
+        { title: 'Home', component: HomePage, icon:'home' },
+        { title: 'My Spots', component: MySpotsPage, icon:'list' },
+        { title: 'Reserve Spot', component: ReservePage, icon:'navigate' },
+        { title: 'History', component: HistoryPage, icon:'archive' },
+        { title: 'My Account', component: AccountPage, icon:'person' },
+        { title: 'Legal', component: HomePage, icon:'construct' }
       ];
     } else {
       return [
-        { title: 'Home', component: HomePage },
-        { title: 'Legal', component: HomePage }
+        { title: 'Home', component: HomePage, icon:'home' },
+        { title: 'Legal', component: HomePage, icon:'construct' }
       ];
     }
 

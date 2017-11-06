@@ -9,6 +9,8 @@ import { AppConfig } from '../../config/app.config';
 })
 export class HistoryPage {
 
+  seqvalue: string = "0";
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public appConfig:AppConfig) {
   }
 

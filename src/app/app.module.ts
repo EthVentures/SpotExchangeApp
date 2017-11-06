@@ -26,6 +26,10 @@ import { InjectionToken } from '@angular/core';
 
 import { AgmCoreModule } from '@agm/core';
 
+
+import { MakeReservePage } from '../pages/make-reserve/make-reserve';
+
+
 declare var process: any;
 
 import { AddSpotPage } from '../pages/add-spot/add-spot';
@@ -34,6 +38,7 @@ import { ModalAutocompleteItems } from '../pages/modal-autocomplete-items/modal-
 import {
 GoogleMaps
 } from '@ionic-native/google-maps';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +53,7 @@ GoogleMaps
     RegisterPage,
     HistoryPage,
     AddSpotPage,
+    MakeReservePage,
     ModalAutocompleteItems
   ],
   imports: [
@@ -72,6 +78,7 @@ GoogleMaps
     RegisterPage,
     HistoryPage,
     AddSpotPage,
+    MakeReservePage,
     ModalAutocompleteItems
   ],
   providers: [

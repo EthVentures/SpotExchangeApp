@@ -1,19 +1,27 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar color="sidemenu">
-      <ion-title>The Spot Exchange</ion-title>
+      <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
     <ion-list>
+      <ion-item menuClose ion-item *ngFor="let p of getPages(authService.isAuthUser())" (click)="openPage(p)">
+        <ion-icon name="{{p.icon}}" item-start color="navbar"></ion-icon>
+        <ion-label>{{p.title}}</ion-label>
+      </ion-item>
 
-      <button menuClose ion-item *ngFor="let p of getPages(authService.isAuthUser())" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+      <ion-item menuClose ion-item *ngIf="!authService.isAuthUser()" (click)="login()">
+        <ion-icon name="log-in" item-start color="navbar"></ion-icon>
+        <ion-label>Login</ion-label>
+      </ion-item>
 
-      <button menuClose ion-item *ngIf="!authService.isAuthUser()" (click)="login()">Login</button>
-      <button menuClose ion-item *ngIf="!authService.isAuthUser()" (click)="register()">Register</button>
+      <ion-item menuClose ion-item *ngIf="!authService.isAuthUser()" (click)="register()">
+        <ion-icon name="person-add" item-start color="navbar"></ion-icon>
+        <ion-label>Register</ion-label>
+      </ion-item>
+
 
     </ion-list>
   </ion-content>

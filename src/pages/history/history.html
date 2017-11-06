@@ -5,6 +5,20 @@
     </button>
     <ion-title>History</ion-title>
   </ion-navbar>
+
+
+  <ion-toolbar no-border-top color="navbar">
+   <ion-segment [(ngModel)]="seqvalue" color="sidemenu">
+     <ion-segment-button value="0">
+       In Progress
+     </ion-segment-button>
+     <ion-segment-button value="1">
+       History
+     </ion-segment-button>
+   </ion-segment>
+ </ion-toolbar>
+
+
 </ion-header>
 
 
@@ -12,7 +26,7 @@
 
 
   <ion-card>
-    <img src="https://maps.googleapis.com/maps/api/staticmap?center=41.900953,-87.624187&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true&key={{appConfig.GOOGLE_MAP_STATIC_API_KEY}}">
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=41.900953,-87.624187&zoom=17&scale=1&size=600x200&maptype=roadmap&format=png&visual_refresh=true&key={{appConfig.GOOGLE_MAP_STATIC_API_KEY}}">
     <ion-item>
       <ion-icon name="car" item-start large></ion-icon>
       <h2>Oak Street Beach Parking</h2>
@@ -31,7 +45,7 @@
 
 
   <ion-card>
-    <img src="https://maps.googleapis.com/maps/api/staticmap?center=41.891322,-87.610046&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true&key={{appConfig.GOOGLE_MAP_STATIC_API_KEY}}">
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=41.891322,-87.610046&zoom=17&scale=1&size=600x200&maptype=roadmap&format=png&visual_refresh=true&key={{appConfig.GOOGLE_MAP_STATIC_API_KEY}}">
     <ion-item>
       <ion-icon name="car" item-start large></ion-icon>
       <h2>Chicago Children's Museum</h2>
@@ -50,7 +64,7 @@
 
 
   <ion-card>
-    <img src="https://maps.googleapis.com/maps/api/staticmap?center=41.889664,-87.619889&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true&key={{appConfig.GOOGLE_MAP_STATIC_API_KEY}}">
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=41.889664,-87.619889&zoom=17&scale=1&size=600x200&maptype=roadmap&format=png&visual_refresh=true&key={{appConfig.GOOGLE_MAP_STATIC_API_KEY}}">
     <ion-item>
       <ion-icon name="car" item-start large></ion-icon>
       <h2>Ogden Plaza Self Parking</h2>

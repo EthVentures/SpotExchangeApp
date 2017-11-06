@@ -4,12 +4,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Reserve Spot</ion-title>
+    <ion-title></ion-title>
     <ion-buttons right>
   <button ion-button icon-only>
-     <ion-icon name="search"></ion-icon>
+     <ion-icon name="information-circle"></ion-icon>
   </button>
 </ion-buttons>
+<ion-searchbar></ion-searchbar>
+
   </ion-navbar>
 </ion-header>
 
@@ -18,7 +20,7 @@
 
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
   <agm-marker *ngFor="let item of markers" [latitude]="item.lat" [longitude]="item.lng" (markerClick)="markerClick(item)"></agm-marker>
-  <agm-polygon *ngFor="let item of polys" [editable] = "false" [paths]="item.geo" [fillColor]="red" (polyClick)="polyClick(item)"></agm-polygon>  
+  <agm-polygon *ngFor="let item of polys" [editable] = "false" [paths]="item.geo" [fillColor]="red" (polyClick)="polyClick(item)"></agm-polygon>
 </agm-map>
 
 

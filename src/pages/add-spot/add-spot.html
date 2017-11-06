@@ -40,26 +40,26 @@
         </ion-item>
         <ion-item>
           <ion-label>Covered</ion-label>
-          <ion-toggle></ion-toggle>
+          <ion-toggle color="sidemenu"></ion-toggle>
         </ion-item>
         <ion-item>
           <ion-label>Valet</ion-label>
-          <ion-toggle></ion-toggle>
+          <ion-toggle color="sidemenu"></ion-toggle>
         </ion-item>
         <ion-item>
           <ion-label>Self-Park</ion-label>
-          <ion-toggle></ion-toggle>
+          <ion-toggle color="sidemenu"></ion-toggle>
         </ion-item>
         <ion-item>
           <ion-label>Handicap Accessible</ion-label>
-          <ion-toggle></ion-toggle>
+          <ion-toggle color="sidemenu"></ion-toggle>
         </ion-item>
         <ion-item>
           <ion-label>In/Out Allowed</ion-label>
-          <ion-toggle></ion-toggle>
+          <ion-toggle color="sidemenu"></ion-toggle>
         </ion-item>
         <div padding>
-          <button ion-button full color="sidemenu">Create</button>
+          <button ion-button full color="sidemenu" (click)="create()">Create <ion-spinner name="bubbles" *ngIf="this.showSpinner"></ion-spinner></button>
         </div>
         <!--<ion-item *ngIf="address.set==true">
             <ion-icon name="pin" item-left></ion-icon>

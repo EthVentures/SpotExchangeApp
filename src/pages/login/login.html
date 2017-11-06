@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="navbar">
-    <ion-title>Login</ion-title>
+    <ion-title>Spot Exchange Login</ion-title>
     <ion-buttons right>
       <button ion-button icon-only (click)="cancel()"><ion-icon name="close"></ion-icon></button>
     </ion-buttons>
@@ -9,7 +9,7 @@
 
 
 <ion-content>
-  <br><br><br><br><br>
+  <br>
 
   <ion-list>
 
@@ -23,10 +23,10 @@
       <ion-input [(ngModel)]="password"  type="password" value=""></ion-input>
     </ion-item>
 
+
   </ion-list>
   <div padding>
     <button ion-button full color="sidemenu" (click)="login()">Login</button>
-    <a href="http://localhost:3000/auth/github">Login via Github</a>
   </div>
 
 </ion-content>
