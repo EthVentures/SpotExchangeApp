@@ -42,6 +42,7 @@ export class LoginPage {
           }
         },
         err => {
+          console.log(err._body);
           var temp = JSON.parse(err._body);
           self.showSpinner = false;
           if (!temp.success) {
