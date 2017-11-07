@@ -3,6 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Http,Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
+import { AppConfig } from '../config/app.config';
 
 @Injectable()
 export class AuthService {
@@ -10,10 +11,8 @@ export class AuthService {
   isAuth:boolean;
   token:string;
 
-  constructor(public zone: NgZone,public http:Http,private storage: Storage) {
+  constructor(public zone: NgZone,public http:Http,private storage: Storage,public appConfig:AppConfig) {
     this.isAuth = false;
-
-    var self = this;
   }
 
   public isAuthUser() {
@@ -23,7 +22,7 @@ export class AuthService {
   register(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://localhost:8888/api/user/register", body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.NODE_GLUE_URL + "api/user/register", body, { headers : head }).map(res =>  res.json());
   }
 
   private getStorageVariable(name) {
@@ -39,7 +38,6 @@ export class AuthService {
 
   setAccessToken(token) {
     this.isAuth = true;
-    console.log(token);
     localStorage.setItem('id_token', token);
   }
 
@@ -55,7 +53,7 @@ export class AuthService {
   login(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://localhost:8888/api/user/authenticate", body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.NODE_GLUE_URL + "api/user/authenticate", body, { headers : head }).map(res =>  res.json());
   }
 
   public logout() {
