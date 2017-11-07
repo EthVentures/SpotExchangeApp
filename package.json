@@ -32,6 +32,7 @@
         "@ionic/storage": "^2.0.1",
         "@types/google-maps": "^3.2.0",
         "auth0-js": "^8.10.1",
+        "connect": "^3.6.5",
         "cordova-ios": "^4.5.3",
         "cordova-plugin-compat": "^1.2.0",
         "cordova-plugin-console": "^1.1.0",
