@@ -9,24 +9,27 @@
 
 
 <ion-content>
-  <br>
 
   <ion-list>
 
+
     <ion-item>
       <ion-label floating>Username</ion-label>
-      <ion-input [(ngModel)]="username" type="text" value=""></ion-input>
+      <ion-input [(ngModel)]="payload.username" type="text" value=""></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input [(ngModel)]="password"  type="password" value=""></ion-input>
+      <ion-input [(ngModel)]="payload.password"  type="password" value=""></ion-input>
     </ion-item>
 
 
   </ion-list>
+  <div padding style="text-align:center;">
+    <h6><span style="color:red;" *ngIf="error">{{errorm}}</span></h6>
+  </div>
   <div padding>
-    <button ion-button full color="sidemenu" (click)="login()">Login</button>
+    <button ion-button full color="sidemenu" (click)="login()">Login <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner></button>
   </div>
 
 </ion-content>

@@ -13,28 +13,40 @@
 
     <ion-item>
       <ion-label floating>Username</ion-label>
-      <ion-input [(ngModel)]="username" type="text" value=""></ion-input>
+      <ion-input [(ngModel)]="payload.username" type="text" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>First Name</ion-label>
+      <ion-input [(ngModel)]="payload.firstName" type="text" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>LastName</ion-label>
+      <ion-input [(ngModel)]="payload.lastName" type="text" value=""></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>E-Mail</ion-label>
-      <ion-input [(ngModel)]="password"  type="password" value=""></ion-input>
+      <ion-input [(ngModel)]="payload.email"  type="email" value=""></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input [(ngModel)]="password"  type="password" value=""></ion-input>
+      <ion-input [(ngModel)]="payload.password"  type="password" value=""></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Retype Password</ion-label>
-      <ion-input [(ngModel)]="password"  type="password" value=""></ion-input>
+      <ion-input type="password" value=""></ion-input>
     </ion-item>
 
   </ion-list>
-
+  <div padding style="text-align:center;">
+    <h6><span style="color:red;" *ngIf="error">{{errorm}}</span></h6>
+  </div>
   <div padding>
-    <button ion-button full color="sidemenu" (click)="register()">Register</button>
+    <button ion-button full color="sidemenu" (click)="register()">Register <ion-spinner name="bubbles" *ngIf="this.showSpinner"></ion-spinner></button>
   </div>
 
 </ion-content>

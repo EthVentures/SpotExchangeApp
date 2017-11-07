@@ -73,7 +73,7 @@ export class MyApp {
     let profileModal = this.modalCtrl.create(LoginPage, { });
     profileModal.onDidDismiss(status => {
       if (status) {
-        this.nav.setRoot(ReservePage);
+        this.nav.setRoot(HomePage);
       }
     });
     profileModal.present();
@@ -84,7 +84,7 @@ export class MyApp {
     let profileModal = this.modalCtrl.create(RegisterPage, { });
     profileModal.onDidDismiss(status => {
       if (status) {
-        this.nav.setRoot(ReservePage);
+        this.nav.setRoot(HomePage);
       }
     });
     profileModal.present();

@@ -10,8 +10,15 @@ import {Location} from '@angular/common';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
+  showSpinner:any;
+  payload:any;
+  error:any;
+  errorm:any;
   constructor(public location:Location,public navCtrl: NavController, public navParams: NavParams, public authService:AuthService, public viewController: ViewController) {
+    this.showSpinner = false;
+    this.payload = {};
+    this.error = false;
+    this.errorm = '';
   }
 
   ionViewDidLoad() { }
@@ -21,8 +28,26 @@ export class LoginPage {
   }
 
   login() {
-    this.authService.login("token");
-    this.viewController.dismiss(true);
+    this.showSpinner = true;
+    var self = this;
+    this.authService.login(this.payload).subscribe(
+      data => {
+        console.log(data);
+        if (data.success) {
+          self.authService.setAccessToken(data.token);
+          self.viewController.dismiss(true);
+        }
+      },
+      err => {
+        var temp = JSON.parse(err._body);
+        self.showSpinner = false;
+        if (!temp.success) {
+          self.error = true;
+          self.errorm = temp.message;
+        }
+      },
+      () => console.log('Logging in....')
+    );
   }
 
 }

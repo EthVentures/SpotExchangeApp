@@ -13,7 +13,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AuthService } from '../services/auth.service';
 import { MockDataService } from '../services/mock.data.service';
-import { HttpModule } from '@angular/http';
 
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -26,7 +25,7 @@ import { InjectionToken } from '@angular/core';
 
 import { AgmCoreModule } from '@agm/core';
 
-
+import { HttpModule } from '@angular/http';
 import { MakeReservePage } from '../pages/make-reserve/make-reserve';
 
 
@@ -34,6 +33,8 @@ declare var process: any;
 
 import { AddSpotPage } from '../pages/add-spot/add-spot';
 import { ModalAutocompleteItems } from '../pages/modal-autocomplete-items/modal-autocomplete-items';
+
+import { IonicStorageModule } from '@ionic/storage';
 
 import {
 GoogleMaps
@@ -63,7 +64,8 @@ GoogleMaps
     AgmCoreModule.forRoot({
       apiKey: process.env['GOOGLE_MAP_API_KEY'],
       libraries: ["places"]
-    })
+    }),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
