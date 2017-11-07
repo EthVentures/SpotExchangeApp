@@ -14,7 +14,7 @@ export class AuthService {
     this.isAuth = false;
 
     var self = this;
-    storage.get('token').then((val) => {
+    /*storage.get('token').then((val) => {
       console.log('Token');
       console.log(val);
       if ((val != '') && (val != null)) {
@@ -24,13 +24,22 @@ export class AuthService {
         self.token = '';
         self.isAuth = false;
       }
-    });
+    });*/
 
   }
 
   public isAuthUser() {
     return this.isAuth;
   }
+
+  /*getToken(){
+    return new Promise<string>((resolve, reject) => {
+      this.storage.get('token').then(token=>{
+    	   console.log('token: '+ token);
+         resolve(token);
+      });
+    });
+  }*/
 
 
   register(params) {
@@ -53,16 +62,22 @@ export class AuthService {
   setAccessToken(token) {
     this.isAuth = true;
     console.log(token);
-    this.storage.set('token', token);
+    //this.storage.set('token', token);
+    localStorage.setItem('id_token', token);
   }
+
+  getToken () { return localStorage.getItem('id_token') || ''; }
+
+  //setCachedToken = function (token) { localStorage.setItem('id_token', token); };
+  //clearCachedToken = function () { localStorage.removeItem('id_token'); };
 
   public isAuthenticated() {
 
   }
 
-  public getToken() {
+  /*public getToken() {
     return this.token;
-  }
+  }*/
 
   login(params) {
     let body = JSON.stringify(params);
@@ -71,8 +86,8 @@ export class AuthService {
   }
 
   public logout() {
-    this.storage.set('token', '');
     this.isAuth = false;
+    localStorage.removeItem('id_token');
   }
 
 }

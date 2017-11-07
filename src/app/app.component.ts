@@ -35,12 +35,20 @@ export class MyApp {
 
     var token_raw = this.getCookie('access_token').replace('s:','').split('.');
     var token = token_raw[0];
-    console.log(token);
+
     if (token_raw[0] != '') {
       this.authService.login(token);
     } else {
       this.authService.logout();
     }
+
+    if (this.authService.getToken() != '') {
+      this.authService.isAuth = true;
+    }
+
+
+
+
 
   }
   getCookie(cookiename)
