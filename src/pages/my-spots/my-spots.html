@@ -16,6 +16,8 @@
 
 <ion-content>
 
+  <div *ngIf="appConfig.NO_FAKE_SWITCH == 0">
+
   <ion-card>
     <img src="https://maps.googleapis.com/maps/api/staticmap?center=41.889664,-87.619889&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true&key={{appConfig.GOOGLE_MAP_STATIC_API_KEY}}">
     <ion-item>
@@ -78,5 +80,7 @@
       <button ion-button full color="sidemenu" (click)="view()">View Transactions</button>
     </div>
   </ion-card>
+
+</div>
 
 </ion-content>

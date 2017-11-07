@@ -12,11 +12,13 @@ export class DetailsPage {
 
   location: any;
   date:any;
+  info:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public appConfig:AppConfig,private alertCtrl: AlertController) {
     var obj = navParams.data['location'];
     this.location = obj.lat + "," + obj.lng;
     this.date = Date();
+    this.info = navParams.data['location'];
   }
 
   ionViewDidLoad() {

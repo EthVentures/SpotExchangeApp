@@ -45,8 +45,19 @@ export class MyApp {
     if (this.authService.getToken() != '') {
       this.authService.isAuth = true;
     }*/
+    /*var s = {"values":[["41.88523011803571", "-87.63557374477386"]]};
+    this.authService.getPricePrediction(s).subscribe(
+      data => {
+        console.log(data);
 
-    
+      },
+      err => {
+        console.log(err);
+      },
+      () => console.log('')
+    );*/
+
+
 
 
     this.authService.refresh();

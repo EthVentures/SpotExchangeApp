@@ -19,7 +19,7 @@
 <!--<div #map id="map"></div>-->
 
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-  <agm-marker *ngFor="let item of markers" [latitude]="item.lat" [longitude]="item.lng" (markerClick)="markerClick(item)"></agm-marker>
+  <agm-marker *ngFor="let item of markers" [iconUrl]="item.icon" [latitude]="item.lat" [longitude]="item.lng" (markerClick)="markerClick(item)"></agm-marker>
   <agm-polygon *ngFor="let item of polys" [editable] = "false" [paths]="item.geo" [fillColor]="red" (polyClick)="polyClick(item)"></agm-polygon>
 </agm-map>
 

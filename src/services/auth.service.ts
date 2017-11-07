@@ -63,12 +63,26 @@ export class AuthService {
     return this.http.post(this.appConfig.NODE_GLUE_URL + "api/data/spot", body, { headers : head }).map(res =>  res.json());
   }
 
+
+  getSpots() {
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(this.appConfig.NODE_GLUE_URL + "api/data/allspots?token=" + this.getToken(), { headers : head }).map(res =>  res.json());
+  }
+
+
+
   setAccessToken(token,user) {
     this.isAuth = true;
     this.token = token;
     this.storage.set('id_token', token);
     this.storage.set('user', user);
     localStorage.setItem('id_token', token);
+  }
+
+  getPricePrediction(params) {
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json','Authorization':'Bearer ' + this.appConfig.IBM_WATSON_ML_TOKEN });
+    return this.http.post(this.appConfig.IBM_WATSON_ML_MODEL, body, { headers : head }).map(res =>  res.json());
   }
 
   getToken () { return this.token; }

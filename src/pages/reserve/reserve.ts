@@ -4,6 +4,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { MockDataService } from '../../services/mock.data.service';
 import { DetailsPage } from '../details/details';
 import { AppConfig } from '../../config/app.config';
+import { AuthService } from '../../services/auth.service';
 
  import {
  GoogleMaps,
@@ -32,10 +33,10 @@ export class ReservePage {
     polys:any;
     loaded: boolean = false;
     paths:any;
-    constructor(public navCtrl: NavController, public geolocation: Geolocation, public mockdata:MockDataService,public appConfig:AppConfig) {
+    constructor(public authService:AuthService,public navCtrl: NavController, public geolocation: Geolocation, public mockdata:MockDataService,public appConfig:AppConfig) {
       this.markers = [];
       this.polys = mockdata.getSpots();
-      console.log(this.polys);
+      //console.log(this.polys);
     }
 
     ionViewDidLoad(){
@@ -44,21 +45,49 @@ export class ReservePage {
           for (var i = 0; i < data.length; i++) {
             var item = data[i]._embedded['pw:location'];
             var location = item.entrances[0].coordinates;
-            var itemLatLng = {lat: location[0], lng: location[1]};
+
+            var itemLatLng = {lat: location[0], lng: location[1], icon:'theirs.png', address:item.address1, name:item.name };
             this.markers.push(itemLatLng);
           }
-          console.log(this.markers);
+          //console.log(this.markers);
           this.loaded = true;
       });
+
+      if (this.appConfig.NO_FAKE_SWITCH) {
+
+      this.authService.getSpots().subscribe(
+        data => {
+          //console.log(data);
+          if (data.success) {
+            var spots = data.spots;
+            for (var i = 0; i < spots.length; i++) {
+              //console.log(spots[i]);
+              var cords = spots[i];
+              var item = JSON.parse(cords.coordinates);
+              item['icon'] = 'ours.png';
+              item['name'] = '';
+              item['address'] = cords.address.street + ' ' + cords.address.city + ' ' + cords.address.state ;
+              this.markers.push(item);
+            }
+          }
+        },
+        err => {
+          console.log(err);
+        },
+        () => console.log('')
+      );
+
+      }
     }
 
     markerClick(item) {
-      console.log(item);
+      //console.log(item);
+
       this.navCtrl.push(DetailsPage, { location: item });
     }
 
     polyClick(item) {
-      console.log(item.geo[0]);
+      //console.log(item.geo[0]);
       this.navCtrl.push(DetailsPage, { location: item.geo[0] });
     }
 

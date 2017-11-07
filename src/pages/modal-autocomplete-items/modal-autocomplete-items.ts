@@ -30,12 +30,10 @@ export class ModalAutocompleteItems implements OnInit{
     }
 
     chooseItem(item: any) {
-        console.log('modal > chooseItem > item > ', item);
         this.viewCtrl.dismiss(item);
     }
 
     updateSearch() {
-        console.log('modal > updateSearch');
         if (this.autocomplete.query == '') {
             this.autocompleteItems = [];
             return;
@@ -47,7 +45,6 @@ export class ModalAutocompleteItems implements OnInit{
             componentRestrictions: { country: 'US' }
         }
         this.acService.getPlacePredictions(config, function (predictions, status) {
-            console.log('modal > getPlacePredictions > status > ', status);
             self.autocompleteItems = [];
             predictions.forEach(function (prediction) {
                 self.autocompleteItems.push(prediction);

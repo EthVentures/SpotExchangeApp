@@ -26,6 +26,8 @@ export class AddSpotPage implements OnInit {
   constructor(public appConfig:AppConfig,public authService:AuthService,public navCtrl: NavController,public modalCtrl: ModalController) {
     this.showSpinner = false;
     this.payload = {covered: false, valet: false, inout: false, handicap: false, self: false};
+
+    //{"values":[["41.88523011803571", "-87.63557374477386"]]}
   }
 
   ngOnInit() {
@@ -45,6 +47,7 @@ export class AddSpotPage implements OnInit {
       self.navCtrl.pop();
     }, 2000);*/
     var self = this;
+    this.showSpinner = true;
     if (this.appConfig.NO_FAKE_SWITCH) {
       this.authService.saveSpot(this.payload).subscribe(
         data => {
@@ -57,7 +60,7 @@ export class AddSpotPage implements OnInit {
         err => {
           var temp = JSON.parse(err._body);
           self.showSpinner = false;
-
+          console.log(temp);
         },
         () => console.log('')
       );
@@ -152,15 +155,15 @@ export class AddSpotPage implements OnInit {
           lat: '',
           lng: '',
           components: {
-              route: { set: false, short:'', long:'' },                           // calle
-              street_number: { set: false, short:'', long:'' },                   // numero
-              sublocality_level_1: { set: false, short:'', long:'' },             // barrio
-              locality: { set: false, short:'', long:'' },                        // localidad, ciudad
-              administrative_area_level_2: { set: false, short:'', long:'' },     // zona/comuna/partido
-              administrative_area_level_1: { set: false, short:'', long:'' },     // estado/provincia
-              country: { set: false, short:'', long:'' },                         // pais
-              postal_code: { set: false, short:'', long:'' },                     // codigo postal
-              postal_code_suffix: { set: false, short:'', long:'' },              // codigo postal - sufijo
+              route: { set: false, short:'', long:'' },
+              street_number: { set: false, short:'', long:'' },
+              sublocality_level_1: { set: false, short:'', long:'' },
+              locality: { set: false, short:'', long:'' },
+              administrative_area_level_2: { set: false, short:'', long:'' },
+              administrative_area_level_1: { set: false, short:'', long:'' },
+              country: { set: false, short:'', long:'' },
+              postal_code: { set: false, short:'', long:'' },
+              postal_code_suffix: { set: false, short:'', long:'' },         
           }
       };
   }

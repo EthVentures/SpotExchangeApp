@@ -10,6 +10,8 @@ export class AppConfig {
   public PARKWHIZ_API_KEY:string;
   public NODE_GLUE_URL:string;
   public NO_FAKE_SWITCH:any;
+  public IBM_WATSON_ML_TOKEN:string;
+  public IBM_WATSON_ML_MODEL:string;
 
   constructor() {
     this.API_URL = this._readString('API_URL', '');
@@ -19,6 +21,8 @@ export class AppConfig {
     this.PARKWHIZ_API_KEY = this._readString('PARKWHIZ_API_KEY', '');
     this.NO_FAKE_SWITCH = this._readString('NO_FAKE_SWITCH', '');
     this.NO_FAKE_SWITCH = parseInt(this.NO_FAKE_SWITCH);
+    this.IBM_WATSON_ML_TOKEN = this._readString('IBM_WATSON_ML_TOKEN', '');
+    this.IBM_WATSON_ML_MODEL = this._readString('IBM_WATSON_ML_MODEL', '');
   }
 
   private _readString(key: string, defaultValue?: string): string {
