@@ -43,10 +43,23 @@ export class ReservePage {
       //this.loadMap();
       this.mockdata.parkwhizSpot(this.lat, this.lng).subscribe(data => {
           for (var i = 0; i < data.length; i++) {
-            var item = data[i]._embedded['pw:location'];
+            var base = data[i];
+            var item = base._embedded['pw:location'];
             var location = item.entrances[0].coordinates;
 
-            var itemLatLng = {lat: location[0], lng: location[1], icon:'theirs.png', address:item.address1, name:item.name };
+            var price = 0;
+            var purchase = base.purchase_options;
+            if (purchase.length > 0) {
+              price = parseFloat(purchase[0].price.USD);
+            }
+
+            var itemLatLng = {lat: location[0], lng: location[1], icon:'theirs.png',rate:price, address:item.address1, name:item.name };
+            itemLatLng['covered'] = false;
+            itemLatLng['valet'] = false;
+            itemLatLng['covered'] = false;
+            itemLatLng['selfPark'] = false;
+            itemLatLng['inOutAllowed'] = false;
+            itemLatLng['handicapAccessible'] = false;
             this.markers.push(itemLatLng);
           }
           //console.log(this.markers);
@@ -67,6 +80,12 @@ export class ReservePage {
               item['icon'] = 'ours.png';
               item['name'] = '';
               item['address'] = cords.address.street + ' ' + cords.address.city + ' ' + cords.address.state ;
+              item['rate'] = cords.ratePerHour;
+              item['valet'] = cords.features.valet;
+              item['covered'] = cords.features.covered;
+              item['selfPark'] = cords.features.selfPark;
+              item['inOutAllowed'] = cords.features.inOutAllowed;
+              item['handicapAccessible'] = cords.features.handicapAccessible;
               this.markers.push(item);
             }
           }

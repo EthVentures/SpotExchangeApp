@@ -28,7 +28,7 @@ export class DetailsPage {
   report() {
     let alert = this.alertCtrl.create({
     title: 'Confirm reporting',
-    message: 'Are you sure your want to report this location for violationing the user agreement of Spot Exchange',
+    message: 'Are you sure your want to report this location (' + this.info.address + ') for violationing the user agreement of Spot Exchange',
     buttons: [
       {
         text: 'Cancel',
@@ -49,7 +49,7 @@ export class DetailsPage {
   }
 
   reserve() {
-    this.navCtrl.push(MakeReservePage, { });
+    this.navCtrl.push(MakeReservePage, { item: this.navParams.data['location'] });
   }
 
 }

@@ -23,27 +23,27 @@
     </ion-item>
 
 
-    <ion-item>
+    <ion-item *ngIf="info.covered">
       <ion-icon name="sunny" item-left large ></ion-icon>
       <p>Covered lot</p>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="info.valet">
       <ion-icon name="key" item-left large ></ion-icon>
       <p>Valet</p>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="info.handicapAccessible">
       <ion-icon name="hand" item-left large ></ion-icon>
       <p>Handicap Accessible</p>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="info.selfPark">
       <ion-icon name="person" item-left large ></ion-icon>
       <p>Self-Parking</p>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="info.inOutAllowed">
       <ion-icon name="arrow-round-back" item-left large ></ion-icon>
       <p>In/Out Allowed</p>
     </ion-item>

@@ -83,4 +83,29 @@
 
 </div>
 
+<div *ngIf="appConfig.NO_FAKE_SWITCH == 1">
+
+  <ion-card *ngFor="let item of myspots">
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center={{item.lat}},{{item.lng}}&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true&key={{appConfig.GOOGLE_MAP_STATIC_API_KEY}}">
+    <ion-item>
+      <ion-icon name="car" item-start large></ion-icon>
+      <h2>{{item.name}}</h2>
+      <p>{{item.address}}</p>
+    </ion-item>
+    <ion-item>
+      <span item-left>Rate:</span>
+      <span item-left>{{item.rate}} USD/Hr</span>
+      <button ion-button icon-left clear item-end>
+        <ion-icon name="build"></ion-icon>
+        Edit
+      </button>
+    </ion-item>
+    <div padding>
+      <button ion-button full color="sidemenu" (click)="view()">View Transactions</button>
+    </div>
+  </ion-card>
+
+</div>
+
+
 </ion-content>
