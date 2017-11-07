@@ -53,7 +53,7 @@ export class ReservePage {
               price = parseFloat(purchase[0].price.USD);
             }
 
-            var itemLatLng = {lat: location[0], lng: location[1], icon:'assets/img/theirs.png',rate:price, address:item.address1, name:item.name };
+            var itemLatLng = {lat: location[0], lng: location[1], icon:'assets/images/theirs.png',rate:price, address:item.address1, name:item.name };
             itemLatLng['covered'] = false;
             itemLatLng['valet'] = false;
             itemLatLng['covered'] = false;
@@ -77,7 +77,7 @@ export class ReservePage {
               //console.log(spots[i]);
               var cords = spots[i];
               var item = JSON.parse(cords.coordinates);
-              item['icon'] = 'assets/img/ours.png';
+              item['icon'] = 'assets/images/ours.png';
               item['name'] = '';
               item['address'] = cords.address.street + ' ' + cords.address.city + ' ' + cords.address.state ;
               item['rate'] = cords.ratePerHour;
