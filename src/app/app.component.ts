@@ -33,7 +33,7 @@ export class MyApp {
   constructor(private _cacheService: CacheService,public appConfig: AppConfig,public modalCtrl: ModalController,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public authService:AuthService) {
     this.initializeApp();
 
-    var token_raw = this.getCookie('access_token').replace('s:','').split('.');
+    /*var token_raw = this.getCookie('access_token').replace('s:','').split('.');
     var token = token_raw[0];
 
     if (token_raw[0] != '') {
@@ -44,12 +44,12 @@ export class MyApp {
 
     if (this.authService.getToken() != '') {
       this.authService.isAuth = true;
-    }
+    }*/
+
+    
 
 
-
-
-
+    this.authService.refresh();
   }
   getCookie(cookiename)
   {
@@ -81,7 +81,7 @@ export class MyApp {
     let profileModal = this.modalCtrl.create(LoginPage, { });
     profileModal.onDidDismiss(status => {
       if (status) {
-        this.nav.setRoot(HomePage);
+        this.nav.setRoot(ReservePage);
       }
     });
     profileModal.present();

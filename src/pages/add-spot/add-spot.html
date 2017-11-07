@@ -18,45 +18,45 @@
             </ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="text" placeholder="Name">
+            <ion-input type="text" placeholder="Name" [(ngModel)]="payload.name">
             </ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="tel" placeholder="Phone"></ion-input>
+          <ion-input type="tel" placeholder="Phone" [(ngModel)]="payload.phone"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="tel" placeholder="Fax"></ion-input>
+          <ion-input type="tel" placeholder="Fax" [(ngModel)]="payload.fax"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="email" placeholder="Email"></ion-input>
+          <ion-input type="email" placeholder="Email" [(ngModel)]="payload.email"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="text" placeholder="Hours">
+            <ion-input type="text" placeholder="Hours" [(ngModel)]="payload.hours">
             </ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="text" placeholder="Rate/Hr">
+            <ion-input type="text" placeholder="Rate/Hr" [(ngModel)]="payload.rate">
             </ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Covered</ion-label>
-          <ion-toggle color="sidemenu"></ion-toggle>
+          <ion-toggle color="sidemenu" [(ngModel)]="payload.covered"></ion-toggle>
         </ion-item>
         <ion-item>
           <ion-label>Valet</ion-label>
-          <ion-toggle color="sidemenu"></ion-toggle>
+          <ion-toggle color="sidemenu" [(ngModel)]="payload.valet"></ion-toggle>
         </ion-item>
         <ion-item>
           <ion-label>Self-Park</ion-label>
-          <ion-toggle color="sidemenu"></ion-toggle>
+          <ion-toggle color="sidemenu" [(ngModel)]="payload.self"></ion-toggle>
         </ion-item>
         <ion-item>
           <ion-label>Handicap Accessible</ion-label>
-          <ion-toggle color="sidemenu"></ion-toggle>
+          <ion-toggle color="sidemenu" [(ngModel)]="payload.handicap"></ion-toggle>
         </ion-item>
         <ion-item>
           <ion-label>In/Out Allowed</ion-label>
-          <ion-toggle color="sidemenu"></ion-toggle>
+          <ion-toggle color="sidemenu" [(ngModel)]="payload.inout"></ion-toggle>
         </ion-item>
         <div padding>
           <button ion-button full color="sidemenu" (click)="create()">Create <ion-spinner name="bubbles" *ngIf="this.showSpinner"></ion-spinner></button>

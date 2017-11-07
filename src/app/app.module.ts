@@ -61,11 +61,11 @@ GoogleMaps
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: process.env['GOOGLE_MAP_API_KEY'],
       libraries: ["places"]
-    }),
-    IonicStorageModule.forRoot()
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

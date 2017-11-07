@@ -10,13 +10,33 @@ export class AuthService {
 
   isAuth:boolean;
   token:string;
+  user:any;
 
   constructor(public zone: NgZone,public http:Http,private storage: Storage,public appConfig:AppConfig) {
     this.isAuth = false;
   }
 
+  refresh() {
+    var self = this;
+    this.storage.get('id_token').then((val) => {
+      if ((val != '') && (val != null)) {
+        self.isAuth = true;
+        self.token = val;
+      } else {
+        self.isAuth = false;
+      }
+    });
+    this.storage.get('user').then((val) => {
+      self.user = val;
+    });
+  }
+
   public isAuthUser() {
     return this.isAuth;
+  }
+
+  getUser() {
+    return this.user;
   }
 
   register(params) {
@@ -36,12 +56,22 @@ export class AuthService {
 
   }
 
-  setAccessToken(token) {
+  saveSpot(params) {
+    params['token'] = this.getToken();
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.appConfig.NODE_GLUE_URL + "api/data/spot", body, { headers : head }).map(res =>  res.json());
+  }
+
+  setAccessToken(token,user) {
     this.isAuth = true;
+    this.token = token;
+    this.storage.set('id_token', token);
+    this.storage.set('user', user);
     localStorage.setItem('id_token', token);
   }
 
-  getToken () { return localStorage.getItem('id_token') || ''; }
+  getToken () { return this.token; }
 
   //setCachedToken = function (token) { localStorage.setItem('id_token', token); };
   //clearCachedToken = function () { localStorage.removeItem('id_token'); };
@@ -58,6 +88,8 @@ export class AuthService {
 
   public logout() {
     this.isAuth = false;
+    this.storage.set('id_token', '');
+    this.storage.set('user', '');
     localStorage.removeItem('id_token');
   }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { ModalAutocompleteItems } from '../modal-autocomplete-items/modal-autocomplete-items';
+import { AuthService } from '../../services/auth.service';
+import { AppConfig } from '../../config/app.config';
 
 declare var google:any;
 
@@ -19,9 +21,11 @@ export class AddSpotPage implements OnInit {
   markers = [];
   placedetails: any;
   showSpinner:any;
+  payload:any;
 
-  constructor(public navCtrl: NavController,public modalCtrl: ModalController) {
+  constructor(public appConfig:AppConfig,public authService:AuthService,public navCtrl: NavController,public modalCtrl: ModalController) {
     this.showSpinner = false;
+    this.payload = {covered: false, valet: false, inout: false, handicap: false, self: false};
   }
 
   ngOnInit() {
@@ -30,11 +34,42 @@ export class AddSpotPage implements OnInit {
   }
 
   create() {
-    this.showSpinner = true;
+    this.payload['place'] = this.address;
+    this.payload['placedetails'] = this.placedetails;
+    this.payload['user'] = this.authService.getUser();
+
+    console.log(this.payload);
+    /*this.showSpinner = true;
     var self = this;
     setTimeout(function(){
       self.navCtrl.pop();
-    }, 2000);
+    }, 2000);*/
+    var self = this;
+    if (this.appConfig.NO_FAKE_SWITCH) {
+      this.authService.saveSpot(this.payload).subscribe(
+        data => {
+          console.log(data);
+          if (data.success) {
+            self.showSpinner = false;
+            self.navCtrl.pop();
+          }
+        },
+        err => {
+          var temp = JSON.parse(err._body);
+          self.showSpinner = false;
+
+        },
+        () => console.log('')
+      );
+    } else {
+      this.showSpinner = true;
+      var self = this;
+      setTimeout(function() {
+        self.navCtrl.pop();
+      },2000);
+    }
+
+
   }
 
   showModal() {
