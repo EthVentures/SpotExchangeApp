@@ -14,33 +14,11 @@ export class AuthService {
     this.isAuth = false;
 
     var self = this;
-    /*storage.get('token').then((val) => {
-      console.log('Token');
-      console.log(val);
-      if ((val != '') && (val != null)) {
-        self.token = val;
-        self.isAuth = true;
-      } else {
-        self.token = '';
-        self.isAuth = false;
-      }
-    });*/
-
   }
 
   public isAuthUser() {
     return this.isAuth;
   }
-
-  /*getToken(){
-    return new Promise<string>((resolve, reject) => {
-      this.storage.get('token').then(token=>{
-    	   console.log('token: '+ token);
-         resolve(token);
-      });
-    });
-  }*/
-
 
   register(params) {
     let body = JSON.stringify(params);
@@ -62,7 +40,6 @@ export class AuthService {
   setAccessToken(token) {
     this.isAuth = true;
     console.log(token);
-    //this.storage.set('token', token);
     localStorage.setItem('id_token', token);
   }
 
@@ -74,10 +51,6 @@ export class AuthService {
   public isAuthenticated() {
 
   }
-
-  /*public getToken() {
-    return this.token;
-  }*/
 
   login(params) {
     let body = JSON.stringify(params);
