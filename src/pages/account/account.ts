@@ -11,7 +11,10 @@ import { Nav, Platform } from 'ionic-angular';
 })
 export class AccountPage {
   @ViewChild(Nav) nav: Nav;
+  user:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService:AuthService) {
+    this.user = {};
+    this.user = authService.getUser();
   }
 
   ionViewDidLoad() {

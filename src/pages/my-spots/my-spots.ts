@@ -29,7 +29,7 @@ export class MySpotsPage {
   ionViewDidEnter() {
     console.log("ionViewDidEnter");
     if (this.appConfig.NO_FAKE_SWITCH) {
-
+    this.myspots = [];
     var id = "resource:io.ethventures.thespot.SpotUser#" + this.authService.getUser().id;
 
     console.log(id);

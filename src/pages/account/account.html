@@ -4,12 +4,34 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>My Account</ion-title>
+    <ion-buttons right>
+  <button ion-button icon-only>
+     <ion-icon name="build"></ion-icon>
+  </button>
+</ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 
 <ion-content padding>
+  <ion-list>
+
+
+    <ion-item>
+      <ion-label>{{user.firstName}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{user.lastName}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{user.email}}</ion-label>
+    </ion-item>
+
+
+  </ion-list>
 
   <div padding>
     <button ion-button full color="sidemenu" (click)="logoff()">Log Off</button>

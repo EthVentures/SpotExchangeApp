@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Http,Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
@@ -18,17 +18,23 @@ export class AuthService {
 
   refresh() {
     var self = this;
-    this.storage.get('id_token').then((val) => {
-      if ((val != '') && (val != null)) {
-        self.isAuth = true;
-        self.token = val;
-      } else {
-        self.isAuth = false;
-      }
+    return new Promise((resolve, reject) => {
+      this.storage.get('id_token').then((token) => {
+        console.log(token);
+        if ((token != '') && (token != null)) {
+          self.isAuth = true;
+          self.token = token;
+        } else {
+          self.isAuth = false;
+        }
+        this.storage.get('user').then((user) => {
+          console.log(user);
+          self.user = user;
+          resolve(self.isAuth);
+        });
+      });
     });
-    this.storage.get('user').then((val) => {
-      self.user = val;
-    });
+
   }
 
   public isAuthUser() {
@@ -43,17 +49,6 @@ export class AuthService {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(this.appConfig.NODE_GLUE_URL + "api/user/register", body, { headers : head }).map(res =>  res.json());
-  }
-
-  private getStorageVariable(name) {
-
-  }
-
-  private setStorageVariable(name, data) {
-  }
-
-  private setIdToken(token) {
-
   }
 
   saveSpot(params) {
@@ -74,6 +69,7 @@ export class AuthService {
   setAccessToken(token,user) {
     this.isAuth = true;
     this.token = token;
+    this.user = user;
     this.storage.set('id_token', token);
     this.storage.set('user', user);
     localStorage.setItem('id_token', token);

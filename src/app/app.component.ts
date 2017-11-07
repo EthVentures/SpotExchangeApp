@@ -59,8 +59,13 @@ export class MyApp {
 
 
 
-
-    this.authService.refresh();
+    var self = this;
+    this.authService.refresh().then((isLogged) => {
+      console.log(isLogged);
+      if (isLogged) {
+        self.nav.setRoot(ReservePage);
+      }
+    });
   }
   getCookie(cookiename)
   {
