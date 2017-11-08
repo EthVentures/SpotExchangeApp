@@ -10,7 +10,7 @@
      <ion-icon name="location" color="white"></ion-icon>
   </button>
 </ion-buttons>
-<ion-searchbar [(ngModel)]="searchQuery" (click)="showModal()" [disabled]="true"
+<ion-searchbar [(ngModel)]="searchQuery" [disabled]="true"
       [showCancelButton]="false" [debounce]="250" autocorrect="off"
       (ionInput)="search($event)"></ion-searchbar>
   </ion-navbar>
