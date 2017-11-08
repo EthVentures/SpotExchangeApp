@@ -11,7 +11,7 @@
   </button>
 </ion-buttons>
 <ion-searchbar [(ngModel)]="searchQuery" (click)="showModal()"
-      [showCancelButton]="true" [debounce]="250" autocorrect="off"
+      [showCancelButton]="false" [debounce]="250" autocorrect="off"
       (ionInput)="search($event)"></ion-searchbar>
   </ion-navbar>
 </ion-header>
