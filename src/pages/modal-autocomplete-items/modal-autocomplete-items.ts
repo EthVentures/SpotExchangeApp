@@ -46,9 +46,11 @@ export class ModalAutocompleteItems implements OnInit{
         }
         this.acService.getPlacePredictions(config, function (predictions, status) {
             self.autocompleteItems = [];
-            predictions.forEach(function (prediction) {
-                self.autocompleteItems.push(prediction);
-            });
+            if (predictions != null) {
+              predictions.forEach(function (prediction) {
+                  self.autocompleteItems.push(prediction);
+              });
+            }
         });
     }
 

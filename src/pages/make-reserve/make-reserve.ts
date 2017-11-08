@@ -19,7 +19,8 @@ export class MakeReservePage {
   info:any;
 
   constructor(public authService:AuthService,public navCtrl: NavController, public navParams: NavParams,public appConfig:AppConfig) {
-    this.location = "41.881832,-87.623177";
+    var obj = navParams.data['item'];
+    this.location = obj.lat + "," + obj.lng;
     this.dateTimeStart = null;
     this.dateTimeEnd = null;
     this.total = 0;

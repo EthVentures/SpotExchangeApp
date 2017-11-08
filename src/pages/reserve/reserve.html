@@ -6,11 +6,13 @@
     </button>
     <ion-title></ion-title>
     <ion-buttons right>
-  <button ion-button icon-only>
-     <ion-icon name="information-circle"></ion-icon>
+  <button ion-button icon-only (click)="location()" [(disabled)]="isRunningGEO">
+     <ion-icon name="location"></ion-icon>
   </button>
 </ion-buttons>
-<ion-searchbar></ion-searchbar>
+<ion-searchbar [(ngModel)]="searchQuery"
+      [showCancelButton]="true" [debounce]="250" autocorrect="off"
+      (ionInput)="search($event)"></ion-searchbar>
 
   </ion-navbar>
 </ion-header>
