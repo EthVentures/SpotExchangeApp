@@ -126,6 +126,7 @@ export class AddSpotPage implements OnInit {
           }
       }
       self.address.set = true;
+      console.log(this.placedetails);
   }
 
   private initMap() {
@@ -163,7 +164,7 @@ export class AddSpotPage implements OnInit {
               administrative_area_level_1: { set: false, short:'', long:'' },
               country: { set: false, short:'', long:'' },
               postal_code: { set: false, short:'', long:'' },
-              postal_code_suffix: { set: false, short:'', long:'' },         
+              postal_code_suffix: { set: false, short:'', long:'' },
           }
       };
   }

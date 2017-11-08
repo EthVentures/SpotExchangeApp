@@ -48,9 +48,11 @@ export class ReservePage {
       console.log(event);
     }
 
+
     location() {
-      console.log("geolocation running");
+
       this.isRunningGEO = true;
+      if(navigator.geolocation){
       this.geolocation.getCurrentPosition().then((position) => {
         this.isRunningGEO = false;
         console.log(position);
@@ -82,7 +84,7 @@ export class ReservePage {
             }
             //console.log(this.markers);
             this.loaded = true;
-        });
+          });
 
         if (this.appConfig.NO_FAKE_SWITCH) {
 
@@ -109,15 +111,21 @@ export class ReservePage {
             }
           },
           err => {
+            this.isRunningGEO = false;
             console.log(err);
           },
           () => console.log('')
         );
-      }
+        }
 
 
+      },
+      err => {
+        this.isRunningGEO = false;
+        alert("Location could not be found!");
       });
     }
+  }
 
     ionViewDidLoad(){
       //this.loadMap();
