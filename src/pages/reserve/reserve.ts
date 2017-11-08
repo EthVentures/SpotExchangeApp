@@ -94,6 +94,7 @@ export class ReservePage {
                   self.markers.push(itemLatLng);
                 }
                 self.loaded = true;
+                clearInterval(self.interval);
             });
 
             if (self.appConfig.NO_FAKE_SWITCH) {
@@ -115,6 +116,7 @@ export class ReservePage {
                     item['inOutAllowed'] = cords.features.inOutAllowed;
                     item['handicapAccessible'] = cords.features.handicapAccessible;
                     self.markers.push(item);
+                    clearInterval(self.interval);
                   }
                 }
               },
@@ -241,6 +243,7 @@ export class ReservePage {
 
     ionViewDidLoad(){
       //this.loadMap();
+      console.log("ionViewDidLoad");
       this.mockdata.parkwhizSpot(this.lat, this.lng).subscribe(data => {
           for (var i = 0; i < data.length; i++) {
             var base = data[i];
