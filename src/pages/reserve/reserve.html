@@ -10,10 +10,9 @@
      <ion-icon name="location" color="white"></ion-icon>
   </button>
 </ion-buttons>
-<ion-searchbar [(ngModel)]="searchQuery"
+<ion-searchbar [(ngModel)]="searchQuery" (click)="showModal()"
       [showCancelButton]="true" [debounce]="250" autocorrect="off"
       (ionInput)="search($event)"></ion-searchbar>
-
   </ion-navbar>
 </ion-header>
 
@@ -21,6 +20,7 @@
 <!--<div #map id="map"></div>-->
 
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
   <agm-marker *ngFor="let item of markers" [iconUrl]="item.icon" [latitude]="item.lat" [longitude]="item.lng" (markerClick)="markerClick(item)"></agm-marker>
   <agm-polygon *ngFor="let item of polys" [editable] = "false" [paths]="item.geo" [fillColor]="red" (polyClick)="polyClick(item)"></agm-polygon>
 </agm-map>
