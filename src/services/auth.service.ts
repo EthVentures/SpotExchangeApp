@@ -78,7 +78,7 @@ export class AuthService {
   getPricePrediction(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json','Authorization':'Bearer ' + this.appConfig.IBM_WATSON_ML_TOKEN });
-    return this.http.post(this.appConfig.IBM_WATSON_ML_MODEL, body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.NODE_GLUE_URL + "api/data/prediction", body, { headers : head }).map(res =>  res.json());
   }
 
   getToken () { return this.token; }

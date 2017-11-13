@@ -35,6 +35,9 @@
             </ion-input>
         </ion-item>
         <ion-item>
+          <h5 *ngIf="pprice != ''">IBM ML Prediction ${{pprice}}</h5>
+        </ion-item>
+        <ion-item>
             <ion-input type="text" placeholder="Rate/Hr" [(ngModel)]="payload.rate">
             </ion-input>
         </ion-item>

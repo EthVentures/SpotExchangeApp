@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, NgZone} from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { ModalAutocompleteItems } from '../modal-autocomplete-items/modal-autocomplete-items';
 import { AuthService } from '../../services/auth.service';
@@ -15,6 +15,8 @@ export class AddSpotPage implements OnInit {
   address:any = {
       place: '',
       set: false,
+      predlat:0,
+      predlng:0
   };
   placesService:any;
   map: any;
@@ -22,12 +24,13 @@ export class AddSpotPage implements OnInit {
   placedetails: any;
   showSpinner:any;
   payload:any;
-
-  constructor(public appConfig:AppConfig,public authService:AuthService,public navCtrl: NavController,public modalCtrl: ModalController) {
+  pprice:any;
+  constructor(private zone:NgZone, public appConfig:AppConfig,public authService:AuthService,public navCtrl: NavController,public modalCtrl: ModalController) {
     this.showSpinner = false;
     this.payload = {covered: false, valet: false, inout: false, handicap: false, self: false};
 
     //{"values":[["41.88523011803571", "-87.63557374477386"]]}
+    this.pprice = '';
   }
 
   ngOnInit() {
@@ -106,6 +109,8 @@ export class AddSpotPage implements OnInit {
               self.placedetails.address = place.formatted_address;
               self.placedetails.lat = place.geometry.location.lat();
               self.placedetails.lng = place.geometry.location.lng();
+              self.address.predlat = place.geometry.location.lat();
+              self.address.predlng = place.geometry.location.lng();
               for (var i = 0; i < place.address_components.length; i++) {
                   let addressType = place.address_components[i].types[0];
                   let values = {
@@ -120,7 +125,7 @@ export class AddSpotPage implements OnInit {
               }
               self.map.setCenter(place.geometry.location);
               self.createMapMarker(place);
-
+              self.getPricePrediction(place.geometry.location.lat(),place.geometry.location.lng());
           }else{
 
           }
@@ -139,6 +144,31 @@ export class AddSpotPage implements OnInit {
           draggable: false,
           zoomControl: true
       });
+  }
+
+  private getPricePrediction(lat,lng):void {
+    var test = {
+       "location":[[lat, lng]]
+    };
+    this.authService.getPricePrediction(test).subscribe(
+      data => {
+        console.log(data);
+        if (data.success) {
+          var prediction =
+          this.zone.run(() => {
+              var values = data.spots['values'];
+              if (values != 0) {
+                var temp = values[0];
+                this.pprice = Math.round(temp[0]);
+              }
+          });
+        }
+      },
+      err => {
+        console.log(err);
+      },
+      () => console.log('')
+    );
   }
 
   private createMapMarker(place:any):void {
