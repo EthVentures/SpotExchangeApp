@@ -156,7 +156,7 @@ export class AddSpotPage implements OnInit {
         if (data.success) {
           var prediction =
           this.zone.run(() => {
-              var values = data.spots['values'];
+              var values = data.prediction['values'];
               if (values != 0) {
                 var temp = values[0];
                 this.pprice = Math.round(temp[0]);
